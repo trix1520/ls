@@ -148,12 +148,16 @@
         .wallet-title {
             color: #7f8fa4;
             font-size: 14px;
-            margin: 12px;
+            margin: 0 0 12px 0; /* Убрал все лишние отступы */
+            padding: 0;
             display: flex;
+            align-items: center;
             gap: 8px;
-            position: relative; /* Добавить */
-            z-index: 5; /* Добавить */
+            position: relative;
+            z-index: 5;
+            line-height: 1.4;
         }
+ 
 
         .ton-connect-container {
             min-height: 60px;
