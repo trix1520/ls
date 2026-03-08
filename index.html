@@ -148,10 +148,12 @@
         .wallet-title {
             color: #7f8fa4;
             font-size: 14px;
-            margin: 12px 12px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
+            position: relative; /* Добавить */
+            z-index: 5; /* Добавить */
         }
 
         .ton-connect-container {
@@ -281,7 +283,9 @@
             font-size: 12px;
             white-space: nowrap;
             color: #7f8fa4;
-        }
+            pointer-events: none; /* Добавить - текст не перекрывает клики */
+            z-index: 10; /* Добавить */
+        } 
 
         .footer {
             padding: 20px 24px;
